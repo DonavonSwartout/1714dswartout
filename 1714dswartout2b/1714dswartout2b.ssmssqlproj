@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="1714dswartout2a">
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="1714dswartout2b">
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
         <ConnectionNode Name="(local):DESKTOP-ABLVHKP\Donavon Swartout">
-          <Created>2019-10-14T03:22:10.3919061-05:00</Created>
+          <Created>2019-10-20T16:57:48.4837224-05:00</Created>
           <Type>SQL</Type>
           <Server>(local)</Server>
           <UserName />
           <Authentication>Windows Authentication</Authentication>
-          <InitialDB>PropertyManager</InitialDB>
+          <InitialDB />
           <LoginTimeout>30</LoginTimeout>
           <ExecutionTimeout>0</ExecutionTimeout>
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
@@ -19,75 +19,69 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="SQLQuery1.sql">
+        <FileNode Name="1714dswartout2bqueries.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery1.sql</FullPath>
+          <FullPath>1714dswartout2bqueries.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
       <Items>
-        <FileNode Name="1714dswartout2a01.png">
+        <FileNode Name="1714dswartoutex2b1.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a01.png</FullPath>
+          <FullPath>1714dswartoutex2b1.png</FullPath>
         </FileNode>
-        <FileNode Name="1714dswartout2a02.png">
+        <FileNode Name="1714dswartoutex2b2.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a02.png</FullPath>
+          <FullPath>1714dswartoutex2b2.png</FullPath>
         </FileNode>
-        <FileNode Name="1714dswartout2a03.png">
+        <FileNode Name="1714dswartoutex2b3.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a03.png</FullPath>
+          <FullPath>1714dswartoutex2b3.png</FullPath>
         </FileNode>
-        <FileNode Name="1714dswartout2a04.png">
+        <FileNode Name="1714dswartoutex2b4.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a04.png</FullPath>
+          <FullPath>1714dswartoutex2b4.png</FullPath>
         </FileNode>
-        <FileNode Name="1714dswartout2a05.png">
+        <FileNode Name="1714dswartoutex2b5.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a05.png</FullPath>
+          <FullPath>1714dswartoutex2b5.png</FullPath>
         </FileNode>
-        <FileNode Name="1714dswartout2a06.png">
+        <FileNode Name="1714dswartoutex2b6.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a06.png</FullPath>
+          <FullPath>1714dswartoutex2b6.png</FullPath>
         </FileNode>
-        <FileNode Name="1714dswartout2a07.png">
+        <FileNode Name="1714dswartoutex2b7.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a07.png</FullPath>
+          <FullPath>1714dswartoutex2b7.png</FullPath>
         </FileNode>
-        <FileNode Name="1714dswartout2a08.png">
+        <FileNode Name="1714dswartoutex2b8.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a08.png</FullPath>
+          <FullPath>1714dswartoutex2b8.png</FullPath>
         </FileNode>
-        <FileNode Name="1714dswartout2a09.png">
+        <FileNode Name="1714dswartoutex2b9.png">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>1714dswartout2a09.png</FullPath>
-        </FileNode>
-        <FileNode Name="1714dswartout2aDatabaseDiagram.png">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
-          <FullPath>1714dswartout2aDatabaseDiagram.png</FullPath>
+          <FullPath>1714dswartoutex2b9.png</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
