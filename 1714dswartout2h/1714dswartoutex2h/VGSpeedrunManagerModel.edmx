@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VGSpeedrunManagerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="VGSpeedrunManagerModelStoreContainer">
+    <EntitySet Name="People" EntityType="VGSpeedrunManagerModel.Store.People" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Games" EntityType="VGSpeedrunManagerModel.Store.Games" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Runs" EntityType="VGSpeedrunManagerModel.Store.Runs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Donations" EntityType="VGSpeedrunManagerModel.Store.Donations" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PersonRun" Association="VGSpeedrunManagerModel.Store.PersonRun">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Run" EntitySet="Runs" />
+    </AssociationSet>
+    <AssociationSet Name="GameRun" Association="VGSpeedrunManagerModel.Store.GameRun">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="Run" EntitySet="Runs" />
+    </AssociationSet>
+    <AssociationSet Name="PersonGame" Association="VGSpeedrunManagerModel.Store.PersonGame">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Game" EntitySet="Games" />
+    </AssociationSet>
+    <AssociationSet Name="PersonDonation" Association="VGSpeedrunManagerModel.Store.PersonDonation">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Judge_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Runs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateSubmitted" Type="datetime" Nullable="false" />
+    <Property Name="TimeElapsed" Type="time" Nullable="false" />
+    <Property Name="Player_Id" Type="int" Nullable="false" />
+    <Property Name="Game_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Donations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" />
+    <Property Name="DateDonated" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Donator_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PersonRun">
+    <End Role="Person" Type="VGSpeedrunManagerModel.Store.People" Multiplicity="1" />
+    <End Role="Run" Type="VGSpeedrunManagerModel.Store.Runs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Run">
+        <PropertyRef Name="Player_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameRun">
+    <End Role="Game" Type="VGSpeedrunManagerModel.Store.Games" Multiplicity="1" />
+    <End Role="Run" Type="VGSpeedrunManagerModel.Store.Runs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Run">
+        <PropertyRef Name="Game_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonGame">
+    <End Role="Person" Type="VGSpeedrunManagerModel.Store.People" Multiplicity="1" />
+    <End Role="Game" Type="VGSpeedrunManagerModel.Store.Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="Judge_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonDonation">
+    <End Role="Person" Type="VGSpeedrunManagerModel.Store.People" Multiplicity="1" />
+    <End Role="Donation" Type="VGSpeedrunManagerModel.Store.Donations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="Donator_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="VGSpeedrunManagerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="VGSpeedrunManagerModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="People" EntityType="VGSpeedrunManagerModel.Person" />
+          <EntitySet Name="Games" EntityType="VGSpeedrunManagerModel.Game" />
+          <EntitySet Name="Runs" EntityType="VGSpeedrunManagerModel.Run" />
+          <AssociationSet Name="PersonRun" Association="VGSpeedrunManagerModel.PersonRun">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Run" EntitySet="Runs" />
+          </AssociationSet>
+          <AssociationSet Name="GameRun" Association="VGSpeedrunManagerModel.GameRun">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Run" EntitySet="Runs" />
+          </AssociationSet>
+          <AssociationSet Name="PersonGame" Association="VGSpeedrunManagerModel.PersonGame">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Game" EntitySet="Games" />
+          </AssociationSet>
+          <EntitySet Name="Donations" EntityType="VGSpeedrunManagerModel.Donation" />
+          <AssociationSet Name="PersonDonation" Association="VGSpeedrunManagerModel.PersonDonation">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <NavigationProperty Name="Runs" Relationship="VGSpeedrunManagerModel.PersonRun" FromRole="Person" ToRole="Run" />
+          <NavigationProperty Name="Games" Relationship="VGSpeedrunManagerModel.PersonGame" FromRole="Person" ToRole="Game" />
+          <NavigationProperty Name="Donations" Relationship="VGSpeedrunManagerModel.PersonDonation" FromRole="Person" ToRole="Donation" />
+          <Property Name="Phone" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameName" Type="String" Nullable="false" />
+          <NavigationProperty Name="Runs" Relationship="VGSpeedrunManagerModel.GameRun" FromRole="Game" ToRole="Run" />
+          <NavigationProperty Name="Judge" Relationship="VGSpeedrunManagerModel.PersonGame" FromRole="Game" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Run">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateSubmitted" Type="DateTime" Nullable="false" />
+          <Property Name="TimeElapsed" Type="Time" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="VGSpeedrunManagerModel.PersonRun" FromRole="Run" ToRole="Person" />
+          <NavigationProperty Name="Game" Relationship="VGSpeedrunManagerModel.GameRun" FromRole="Run" ToRole="Game" />
+        </EntityType>
+        <Association Name="PersonRun">
+          <End Type="VGSpeedrunManagerModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="VGSpeedrunManagerModel.Run" Role="Run" Multiplicity="*" />
+        </Association>
+        <Association Name="GameRun">
+          <End Type="VGSpeedrunManagerModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="VGSpeedrunManagerModel.Run" Role="Run" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonGame">
+          <End Type="VGSpeedrunManagerModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="VGSpeedrunManagerModel.Game" Role="Game" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Donator" Relationship="VGSpeedrunManagerModel.PersonDonation" FromRole="Donation" ToRole="Person" />
+          <Property Name="DateDonated" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="PersonDonation">
+          <End Type="VGSpeedrunManagerModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="VGSpeedrunManagerModel.Donation" Role="Donation" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VGSpeedrunManagerModelStoreContainer" CdmEntityContainer="VGSpeedrunManagerModelContainer">
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="IsTypeOf(VGSpeedrunManagerModel.Person)">
+        <MappingFragment StoreEntitySet="People">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="IsTypeOf(VGSpeedrunManagerModel.Game)">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameName" ColumnName="GameName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Runs">
+      <EntityTypeMapping TypeName="IsTypeOf(VGSpeedrunManagerModel.Run)">
+        <MappingFragment StoreEntitySet="Runs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateSubmitted" ColumnName="DateSubmitted" />
+          <ScalarProperty Name="TimeElapsed" ColumnName="TimeElapsed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donations">
+      <EntityTypeMapping TypeName="IsTypeOf(VGSpeedrunManagerModel.Donation)">
+        <MappingFragment StoreEntitySet="Donations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DateDonated" ColumnName="DateDonated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PersonRun" TypeName="VGSpeedrunManagerModel.PersonRun" StoreEntitySet="Runs">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Player_Id" />
+      </EndProperty>
+      <EndProperty Name="Run">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GameRun" TypeName="VGSpeedrunManagerModel.GameRun" StoreEntitySet="Runs">
+      <EndProperty Name="Game">
+        <ScalarProperty Name="Id" ColumnName="Game_Id" />
+      </EndProperty>
+      <EndProperty Name="Run">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonGame" TypeName="VGSpeedrunManagerModel.PersonGame" StoreEntitySet="Games">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Judge_Id" />
+      </EndProperty>
+      <EndProperty Name="Game">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonDonation" TypeName="VGSpeedrunManagerModel.PersonDonation" StoreEntitySet="Donations">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Donator_Id" />
+      </EndProperty>
+      <EndProperty Name="Donation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
